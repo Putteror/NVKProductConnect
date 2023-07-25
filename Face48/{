@@ -1,0 +1,753 @@
+{
+   "EMPID":"None",
+   "_type":"employee",
+   "accessControlCards":[
+      
+   ],
+   "accessControlDisabled":"None",
+   "accessControlEnabled":"None",
+   "accessControlRules":[
+      {
+         "_type":"shenxing",
+         "accessControlGroup":{
+            "_type":"shenxing",
+            "addedTime":"2022-08-01 02:28:28",
+            "dashboardId":"62e6229af222c661e01e189a",
+            "description":"None",
+            "id":"62e73a4c8bc0e019acbe2f93",
+            "location":"None",
+            "modifiedBy":"nvk_admin",
+            "modifiedTime":"2022-08-01 02:28:28",
+            "name":"NVK-Shenxing",
+            "screenCount":11,
+            "screens":[
+               {
+                  "id":"62e8de0a1f87a1733b528ec7",
+                  "name":"1st Accounting (Phahon) - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8ddc61f87a1733b528e28",
+                  "name":"1st Accounting- Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e72ec552fb6561288a2882",
+                  "name":"1st HQ Rear Door - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8c95b72671c830acedeb6",
+                  "name":"2nd CONSULTANT ROOM - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8deef677dc55f75deeea1",
+                  "name":"2nd Gecko Room - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8db48a997daec51229ca5",
+                  "name":"2nd Lion Room - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8df92c59e1affcdaf73a8",
+                  "name":"2nd Store - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8dd281f87a1733b528dd6",
+                  "name":"3rd MD Room - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8dd7fc59e1affcdaf72e5",
+                  "name":"3rd Tiger Room - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e8cd4da5193bcbe0d2b754",
+                  "name":"4th Phoenix Room - Entry",
+                  "reader":"None"
+               },
+               {
+                  "id":"62e72f2e52db1a401f142db4",
+                  "name":"1st NVK48 - Entry",
+                  "reader":"None"
+               }
+            ],
+            "server":"None",
+            "systemDefault":false
+         },
+         "accessControlGroups":[
+            {
+               "id":"62e73a4c8bc0e019acbe2f93",
+               "name":"NVK-Shenxing"
+            }
+         ],
+         "addedTime":"2022-08-01 02:30:06",
+         "dashboardId":"62e6229af222c661e01e189a",
+         "description":"None",
+         "id":"62e73aaef5900e08e695d3f2",
+         "modifiedBy":"nvk_admin",
+         "modifiedTime":"2022-09-02 04:53:57",
+         "name":"Shenxing-rule",
+         "openAccessSchedule":{
+            "addedTime":"None",
+            "dashboardId":"62e6229af222c661e01e189a",
+            "description":"Koala's default period setting.",
+            "endDate":"2200-01-01",
+            "fridaySchedule1":[
+               0,
+               86399
+            ],
+            "fridaySchedule2":[
+               0,
+               0
+            ],
+            "fridaySchedule3":[
+               0,
+               0
+            ],
+            "id":"62e6229af222c661e01e189e",
+            "koalaId":26,
+            "modifiedBy":"None",
+            "modifiedTime":"None",
+            "mondaySchedule1":[
+               0,
+               86399
+            ],
+            "mondaySchedule2":[
+               0,
+               0
+            ],
+            "mondaySchedule3":[
+               0,
+               0
+            ],
+            "name":"ALL",
+            "remoteIds":[
+               {
+                  "_type":"open-access-schedule",
+                  "deviceId":"632170d888c1131489f52334",
+                  "id":"632171843838bc64a90eee76",
+                  "localId":"2",
+                  "platform":"shenxing"
+               }
+            ],
+            "saturdaySchedule1":[
+               0,
+               86399
+            ],
+            "saturdaySchedule2":[
+               0,
+               0
+            ],
+            "saturdaySchedule3":[
+               0,
+               0
+            ],
+            "servers":[
+               {
+                  "koalaId":26,
+                  "server":{
+                     "id":"62e72e72246ac3838fd2f200",
+                     "name":"NVK Box"
+                  }
+               }
+            ],
+            "startDate":"1970-01-01",
+            "sundaySchedule1":[
+               0,
+               86399
+            ],
+            "sundaySchedule2":[
+               0,
+               0
+            ],
+            "sundaySchedule3":[
+               0,
+               0
+            ],
+            "systemDefault":true,
+            "thursdaySchedule1":[
+               0,
+               86399
+            ],
+            "thursdaySchedule2":[
+               0,
+               0
+            ],
+            "thursdaySchedule3":[
+               0,
+               0
+            ],
+            "tuesdaySchedule1":[
+               0,
+               86399
+            ],
+            "tuesdaySchedule2":[
+               0,
+               0
+            ],
+            "tuesdaySchedule3":[
+               0,
+               0
+            ],
+            "wednesdaySchedule1":[
+               0,
+               86399
+            ],
+            "wednesdaySchedule2":[
+               0,
+               0
+            ],
+            "wednesdaySchedule3":[
+               0,
+               0
+            ]
+         },
+         "peopleGroup":{
+            "_type":"staff",
+            "addedTime":"None",
+            "dashboardId":"62e6229af222c661e01e189a",
+            "description":"Koala's default employee group.",
+            "id":"62e6229af222c661e01e189c",
+            "koalaId":66,
+            "modifiedBy":"None",
+            "modifiedTime":"None",
+            "name":"ALL_EMPLOYEE",
+            "remoteIds":[
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8de0a1f87a1733b528ec7",
+                  "id":"62e8e11917e41056ed2ad9ce",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8ddc61f87a1733b528e28",
+                  "id":"62e8e11917e41056ed2ad9cc",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e72ec552fb6561288a2882",
+                  "id":"62e73aaff5900e08e695d3f4",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8c95b72671c830acedeb6",
+                  "id":"62e8e11a17e41056ed2ad9d0",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8deef677dc55f75deeea1",
+                  "id":"62e9f4f1aba76fca2f01ccc8",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8db48a997daec51229ca5",
+                  "id":"62ea32cdf6f75500afa8a454",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8df92c59e1affcdaf73a8",
+                  "id":"62e8e13017e41056ed2ad9dc",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8dd281f87a1733b528dd6",
+                  "id":"62e8e11d17e41056ed2ad9d4",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8dd7fc59e1affcdaf72e5",
+                  "id":"62e8e11e17e41056ed2ad9d6",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e8cd4da5193bcbe0d2b754",
+                  "id":"62e8e11917e41056ed2ad9ca",
+                  "localId":"2",
+                  "platform":"shenxing"
+               },
+               {
+                  "_type":"people-group",
+                  "deviceId":"62e72f2e52db1a401f142db4",
+                  "id":"62e9f4efaba76fca2f01ccc6",
+                  "localId":"2",
+                  "platform":"shenxing"
+               }
+            ],
+            "servers":[
+               {
+                  "koalaId":66,
+                  "server":{
+                     "id":"62e72e72246ac3838fd2f200",
+                     "name":"NVK Box"
+                  }
+               }
+            ],
+            "systemDefault":true
+         }
+      }
+   ],
+   "addedTime":"2022-08-10 11:23:28",
+   "address":{
+      "_type":"home",
+      "alley":"None",
+      "buildingName":"None",
+      "civicNumber":"510",
+      "district":"None",
+      "floorNumber":"None",
+      "postcode":"None",
+      "province":"None",
+      "roomNumber":"None",
+      "street":"None",
+      "subDistrict":"None"
+   },
+   "agentCode":"None",
+   "alert_count":0,
+   "attendanceTime":[
+      {
+         "addedTime":"2022-08-03 11:38:09",
+         "calculateHourlyWage":false,
+         "dashboardId":"62e6229af222c661e01e189a",
+         "earlyIn":120,
+         "earlyOut":30,
+         "friday":true,
+         "hourlyWage":"0.00",
+         "id":"62ea5e2179f517663d90074a",
+         "isOverNightShift":false,
+         "isOverTimeShift":false,
+         "lateIn":90,
+         "lateOut":0,
+         "modifiedBy":"nvk_admin",
+         "modifiedTime":"2022-08-03 11:38:09",
+         "monday":true,
+         "name":"NVK48",
+         "partialPaid":false,
+         "saturday":false,
+         "sunday":false,
+         "systemDefault":false,
+         "thursday":true,
+         "timeIn":"09:00:00",
+         "timeOut":"18:00:00",
+         "tuesday":true,
+         "wednesday":true
+      }
+   ],
+   "avatar":"None",
+   "badges":[
+      
+   ],
+   "birthDay":"1957-01-01",
+   "bloodType":"AB",
+   "branch":{
+      "addedTime":"2022-07-31 07:03:04",
+      "dashboardId":"62e6229af222c661e01e189a",
+      "description":"None",
+      "id":"62e6292814e7a88cbd75d481",
+      "modifiedBy":"nvk_admin",
+      "modifiedTime":"2022-07-31 07:03:04",
+      "name":"NVK48",
+      "region":{
+         "id":"62e6291b9e811f82e2cab0be",
+         "name":"ภาคกลาง"
+      }
+   },
+   "cardId":"48002",
+   "cardName":"สมชาย",
+   "centralIds":[
+      {
+         "personId":"213",
+         "serverId":"62e623fd95a1a2d8cd1b48f7"
+      }
+   ],
+   "classRoom":"None",
+   "company":{
+      "addedTime":"2022-07-31 07:03:35",
+      "address":{
+         "_type":"workplace",
+         "alley":"None",
+         "buildingName":"None",
+         "civicNumber":"None",
+         "district":"None",
+         "floorNumber":"None",
+         "postcode":"None",
+         "province":"None",
+         "roomNumber":"None",
+         "street":"None",
+         "subDistrict":"None"
+      },
+      "chartColor":"None",
+      "dashboardId":"62e6229af222c661e01e189a",
+      "id":"62e62947d770800a1c227eeb",
+      "modifiedBy":"nvk_admin",
+      "modifiedTime":"2022-07-31 10:15:44",
+      "name":"NVK 48 Co., Ltd."
+   },
+   "consentAccepted":true,
+   "dashboardId":"62e6229af222c661e01e189a",
+   "defaultFloor":"None",
+   "department":{
+      "addedTime":"2022-07-31 10:20:56",
+      "chartColor":"None",
+      "id":"62e65788cde8c2773c38164c",
+      "modifiedBy":"nvk_admin",
+      "modifiedTime":"2022-07-31 10:20:56",
+      "name":"NVK48"
+   },
+   "description":"None",
+   "disabledCheckInRecord":false,
+   "disabledHistoryLog":false,
+   "disabledTimeAttendance":false,
+   "division":"Front end division",
+   "dynamicAttendanceTime":[
+      
+   ],
+   "email":"example@example.com",
+   "employeeClass":"ordinary",
+   "employeeId":"NVK48-0008",
+   "employeeStatus":"None",
+   "employmentType":"None",
+   "enrollDate":"2020-01-01",
+   "exitDate":"None",
+   "expiredDate":"2025-01-01",
+   "faceImages":[
+      
+   ],
+   "firstName":"Naruphat",
+   "floors":[
+      
+   ],
+   "fullAddress":"Sena Nikhom, ChatuChak, Bangkok 10900",
+   "gender":"male",
+   "group":"None",
+   "hikCentralAccessLevelLists":[
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62e6245cdf22c4f36dde4e00",
+         "privilegeGroupName":"NVK48-2"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62e6245cdf22c4f36dde4e01",
+         "privilegeGroupName":"Sphinx Meeting Room"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62e6245cdf22c4f36dde4e02",
+         "privilegeGroupName":"NB 1st Showroom Door"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62e6245cdf22c4f36dde4e03",
+         "privilegeGroupName":"NB 3rd Floor"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62e6245cdf22c4f36dde4e04",
+         "privilegeGroupName":"NB 1st Floor"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62e6245cdf22c4f36dde4e05",
+         "privilegeGroupName":"NB 2nd Floor"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62ea40fc60288602bef2709f",
+         "privilegeGroupName":"HQ Exit"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62ec94b334bc90099a2422af",
+         "privilegeGroupName":"NVK48 - Exit"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62f086688cda80be9f71df9a",
+         "privilegeGroupName":"2nd Store Room - Exit"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62f3561744a1498f657b1bf8",
+         "privilegeGroupName":"NB 3rd sales Team"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62f35920da7c3d766ad3f378",
+         "privilegeGroupName":"3rd Sales Team"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62f4bf2605838cd015d276b9",
+         "privilegeGroupName":"Phuket"
+      },
+      {
+         "hikCentralServer":{
+            "id":"62e623fd95a1a2d8cd1b48f7",
+            "name":"NVK HikCentral Pro"
+         },
+         "id":"62fc59de44d4f6230743c16a",
+         "privilegeGroupName":"ChiangMai"
+      }
+   ],
+   "holidayGroup":"None",
+   "hospitalNumber":"None",
+   "id":"62f332c0b61f2f358d9a2d2d",
+   "isEventParticipant":false,
+   "islamicStudy":"None",
+   "jobPosition":"None",
+   "koalaIds":[
+      
+   ],
+   "lastName":"Nirattisayangkool",
+   "leaveTypeList":"None",
+   "licensePlate":"None",
+   "martialStatus":"single",
+   "middleName":"เอง",
+   "minmoeDeviceGroups":"None",
+   "minmoePeople":[
+      {
+         "end":"2029-12-31 11:15",
+         "id":"63293e52268ae45ef866a7f6",
+         "minmoe":{
+            "id":"632938acf66e78032d4c2832",
+            "name":"1st NVK48 - Exit"
+         },
+         "start":"2022-09-20 11:15"
+      },
+      {
+         "end":"2029-09-28 14:36",
+         "id":"632c109eb3d6c59f4505eb27",
+         "minmoe":{
+            "id":"632becea902d87cd83d91f71",
+            "name":"1st Showroom - Entry"
+         },
+         "start":"2022-09-01 14:36"
+      },
+      {
+         "end":"2029-09-27 14:58",
+         "id":"632c15b50c8a4cb7535edc8a",
+         "minmoe":{
+            "id":"632c153c810b3db8b64e6867",
+            "name":"1st Main NB - Exit"
+         },
+         "start":"2022-09-01 14:58"
+      },
+      {
+         "end":"2029-09-21 15:36",
+         "id":"632c1eb479d161044984b1ca",
+         "minmoe":{
+            "id":"632c1d9f9756068e9555802b",
+            "name":"1st HQ Main - Exit"
+         },
+         "start":"2022-09-15 15:36"
+      },
+      {
+         "end":"2029-09-29 11:42",
+         "id":"6333d0b580a1b8699dd12c87",
+         "minmoe":{
+            "id":"6333cfb902e350dae42f7803",
+            "name":"1st Main Door - Entry"
+         },
+         "start":"2022-09-01 11:41"
+      },
+      {
+         "end":"2030-02-28 11:59",
+         "id":"6333d4bc02e350dae42f783d",
+         "minmoe":{
+            "id":"6333d424805155e6912a0d15",
+            "name":"3rd Sales Team - Entry"
+         },
+         "start":"2022-09-28 11:59"
+      },
+      {
+         "end":"2029-09-28 11:50",
+         "id":"633675b83b4f6319fcf193bd",
+         "minmoe":{
+            "id":"6333d261e655389960492ef0",
+            "name":"2nd Store - Exit"
+         },
+         "start":"2022-09-29 11:50"
+      },
+      {
+         "end":"2029-09-29 13:50",
+         "id":"633691ec80a1b8699dd12ebd",
+         "minmoe":{
+            "id":"633690a7810b3db8b64e6f56",
+            "name":"2nd Eng Right - Entry"
+         },
+         "start":"2022-09-29 13:50"
+      },
+      {
+         "end":"2029-10-31 11:08",
+         "id":"633a6051c4b28d676e302566",
+         "minmoe":{
+            "id":"633a5fb3c4b28d676e30255f",
+            "name":"CM-In"
+         },
+         "start":"2022-09-29 11:08"
+      },
+      {
+         "end":"2029-10-23 11:33",
+         "id":"633a6673dd3a744d7aac5a6f",
+         "minmoe":{
+            "id":"633a65c6574dc395f35bd575",
+            "name":"CM-Out"
+         },
+         "start":"2022-09-29 11:33"
+      },
+      {
+         "end":"2029-10-31 16:26",
+         "id":"633aaafd64d456695661248e",
+         "minmoe":{
+            "id":"633aaa66cb204a58c4a3f35c",
+            "name":"Phuket-In"
+         },
+         "start":"2022-09-29 16:26"
+      },
+      {
+         "end":"2029-10-31 16:41",
+         "id":"633aae71c912cc536cef4a87",
+         "minmoe":{
+            "id":"633aacaac912cc536cef4a2f",
+            "name":"Phuket-Out"
+         },
+         "start":"2022-09-29 16:41"
+      },
+      {
+         "end":"2029-10-31 11:11",
+         "id":"633bb29926e9a0416418e81a",
+         "minmoe":{
+            "id":"633bb178c57ee1547c37df28",
+            "name":"2nd Service Main - Entry"
+         },
+         "start":"2022-09-29 11:11"
+      },
+      {
+         "end":"2029-10-24 11:24",
+         "id":"633bb5a7bf60618e247b044c",
+         "minmoe":{
+            "id":"633bb503c57ee1547c37df2e",
+            "name":"3rd Sphinx Room - Entry"
+         },
+         "start":"2022-09-29 11:24"
+      }
+   ],
+   "minmoeQrcode":"None",
+   "mobilePhone":"0812345678",
+   "modifiedBy":"nvk_admin",
+   "modifiedTime":"2023-05-25 08:58:54",
+   "nationality":"Thai",
+   "networkPolicy":"None",
+   "nickname":"ชาย",
+   "passportId":"A658965",
+   "photo_failed_reason":"None",
+   "photos":[
+      {
+         "id":"6314605b5f35407f9504cf60",
+         "image":"/static/photo/62f332c0b61f2f358d9a2d2d.jpeg?date=1685005890016",
+         "refId":"None",
+         "serverId":"None",
+         "thumbnail":"/static/thumbnail/62f332c0b61f2f358d9a2d2d_1662279771.jpg"
+      }
+   ],
+   "pin":"None",
+   "reason":"None",
+   "refIds":[
+      
+   ],
+   "schoolHour":"None",
+   "semester":"None",
+   "servers":[
+      
+   ],
+   "shenxingPad":[
+      
+   ],
+   "shenxingQrcode":"None",
+   "signature":"None",
+   "ssno":"None",
+   "studentId":"None",
+   "studentNo":"None",
+   "studentStatus":"None",
+   "subject_id":"None",
+   "thaiCitizenId":"None",
+   "title":{
+      "addedTime":"2022-09-05 18:13:43",
+      "dashboardId":"62e6229af222c661e01e189a",
+      "id":"6315d9e75ff5603aaf12221b",
+      "modifiedBy":"nvk_admin",
+      "modifiedTime":"2022-09-05 18:13:43",
+      "name":"Mr."
+   },
+   "useDynamicShift":false,
+   "userDefinedValues":"None",
+   "vajiraPersonId":"None",
+   "visitCount":0,
+   "visitPurpose":"None",
+   "visitee":"None",
+   "visitorCategory":"None",
+   "ward":"None",
+   "wifiPassword":"P@ssw0rd2022",
+   "wifiUsername":"nvk_admin",
+   "workPhone":"021234567",
+   "workPhoneExtension":"48"
+}
