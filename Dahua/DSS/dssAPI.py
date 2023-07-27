@@ -197,6 +197,7 @@ class DSS :
 
 		return get_device_info_response.json()
 
+
 	####################################################
 	### Person Group ###################################
 	####################################################
@@ -215,13 +216,34 @@ class DSS :
 		return get_person_group_response.json()
 
 
+
+	def create_person_group(self, groupName, parentOrgCode="001", roleId=[1]): # 6.2.8.1 Person Group
+
+		create_person_group_path = "/obms/api/v1.1/acs/person-group"
+		create_person_group_url = self.hostAddress + create_person_group_path
+
+		headers = { 'X-Subject-Token' : self.token , "Content-Type": "Application/json"}
+
+		requestsBody = {
+
+			"parentOrgCode" : parentOrgCode,
+			"orgName" : groupName,
+			"roleIds" : roleId
+		}
+
+		create_person_group_response = requests.post( url=create_person_group_url, headers=headers, json=requestsBody, verify=False)
+
+		return create_person_group_response.json()
+
+
+
 	####################################################
 	### Person #########################################
 	####################################################
 
 	# 6.2.8.2 Person Information
 
-	def get_person_list(self, page=1, pageSize=30, group_code="001"): # 6.2.8.2.5 Get the List of Persons in Pages
+	def get_person_list(self, page=1, pageSize=30, groupCode="001"): # 6.2.8.2.5 Get the List of Persons in Pages
 
 		get_person_path = "/obms/api/v1.1/acs/person/page"
 		get_person_url = self.hostAddress + get_person_path
@@ -238,6 +260,129 @@ class DSS :
 		get_person_response = requests.get( url=get_person_url, headers=headers, verify=False, params=query)
 
 		return get_person_response.json()
+
+	def create_person(self, personId, firstName, lastName=None, gender="0", imagePath=None, groupCode="001", start="1615824000", end="1931443199"):
+
+		create_person_path = "/obms/api/v1.1/acs/person"
+		create_person_url = self.hostAddress + create_person_path
+
+		headers = { 'X-Subject-Token' : self.token , "Content-Type": "Application/json"}
+
+		if imagePath :
+
+			image_path = image_to_base64(imagePath)
+
+		else :
+
+			image_path = None
+
+		requestsBody = {
+			"baseInfo": { 
+				"personId": personId, 
+				"firstName": firstName, 
+				"lastName" : lastName,
+				"gender": gender, 
+				"orgCode": groupCode, 
+				"facePictures": [ image_path ], 
+				"source": "0" 
+				},
+			"faceComparisonInfo": { 
+				"enableFaceComparisonGroup": "0"
+				},
+
+			"entranceInfo": { 
+				"enableParkingSpace": "0", 
+				"parkingSpaceNum": "0",
+				"enableEntranceGroup": "0",
+				},
+			"accessInfo": { 
+				"accessType": "0", 
+				},
+			"authenticationInfo": { 
+				"startTime": str(start), 
+				"endTime": str(end)
+				}
+
+		}
+
+		create_person_response = requests.post( url=create_person_url, headers=headers, verify=False, json=requestsBody)
+
+		return create_person_response.json()
+
+	def update_person(self, personId, firstName, lastName=None, gender="0", imagePath=None, groupCode="001", start="1615824000", end="1931443199"):
+
+		update_person_path = f"/obms/api/v1.1/acs/person/{personId}"
+		update_person_url = self.hostAddress + update_person_path
+
+		headers = { 'X-Subject-Token' : self.token , "Content-Type": "Application/json"}
+
+		if imagePath :
+
+			image_path = image_to_base64(imagePath)
+
+		else :
+
+			image_path = None
+
+		requestsBody = {
+			"baseInfo": { 
+				"personId": personId, 
+				"firstName": firstName, 
+				"lastName" : lastName,
+				"gender": gender, 
+				"orgCode": groupCode, 
+				"facePictures": [ image_path ], 
+				"source": "0" 
+				},
+			"faceComparisonInfo": { 
+				"enableFaceComparisonGroup": "0"
+				},
+
+			"entranceInfo": { 
+				"enableParkingSpace": "0", 
+				"parkingSpaceNum": "0",
+				"enableEntranceGroup": "0",
+				},
+			"accessInfo": { 
+				"accessType": "0", 
+				},
+			"authenticationInfo": { 
+				"startTime": str(start), 
+				"endTime": str(end)
+				}
+
+		}
+
+		update_person_response = requests.put( url=update_person_url, headers=headers, verify=False, json=requestsBody)
+
+		return update_person_response.json()
+
+	def delete_person(self, personId):
+
+		person_ids = []
+
+		delete_person_path = "/obms/api/v1.1/acs/person/delete/batch"
+		delete_person_url = self.hostAddress + delete_person_path
+
+		headers = { 'X-Subject-Token' : self.token , "Content-Type": "Application/json"}
+
+		if type(personId) is str :
+
+			person_ids.append(personId)
+
+		elif type(personId) is list :
+
+			person_ids = personId
+
+
+		requestsBody = {
+
+			"personIds" : person_ids
+		}
+
+		delete_person_response = requests.post( url=delete_person_url, headers=headers, json=requestsBody, verify=False )
+
+		return delete_person_response.json()
 
 
 	####################################################
@@ -309,9 +454,13 @@ if __name__ == '__main__':
 	# print(dss.get_device_list())
 	# print(dss.get_device_by_code("1000003"))
 
+	# print(dss.create_person_group("test"))
 	# print(dss.get_person_group_list())
 
 	# print(dss.get_person_list())
+	# print(dss.create_person(personId="putter", firstName="API", imagePath="C:/Users/putter/Pictures/000012.jpg"))
+	# print(dss.update_person(personId="putter", firstName="API", imagePath="C:/Users/putter/Pictures/000012.jpg"))
+	print(dss.delete_person(personId="putter"))
 
 	# print(dss.get_record())
 	# print(dss.get_record_by_id("204"))

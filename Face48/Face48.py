@@ -590,7 +590,7 @@ if __name__ == '__main__':
 	
 	# face48 = Face48(hostAddress='http://10.10.10.97', username='admin', password='P@ssw0rd@NMU')
 	# face48 = Face48(hostAddress='https://face48.vajira.ac.th', username='admin', password='P@ssw0rd2022')
-	face48 = Face48(hostAddress='http://192.168.33.92', username='iyo@nvk.co.th', password='P@ssw0rd!234')
+	face48 = Face48(hostAddress='http://192.168.33.45', username='iyo@nvk.co.th', password='P@ssw0rd!234')
 
 	print(face48.login())
 
