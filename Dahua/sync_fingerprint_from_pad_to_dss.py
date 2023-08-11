@@ -5,13 +5,13 @@ from DSS.dssAPI import DSS
 from Pad.padAPI import Dahua
 import json
 
-DAHUA_PAD_ADDRESS = "http://192.168.33.31"
+DAHUA_PAD_ADDRESS = "http://192.168.151.35"
 DAHUA_PAD_USERNAME = "admin"
-DAHUA_PAD_PASSWORD = "nVk12345"
+DAHUA_PAD_PASSWORD = "dpu!2345"
 
-DSS_ADDRESS = "https://192.168.11.250"
+DSS_ADDRESS = "https://192.168.80.167"
 DSS_USERNAME = "system"
-DSS_PASSWORD = "nVk12345"
+DSS_PASSWORD = "Dpu12345"
 
 dss = DSS(hostAddress=DSS_ADDRESS, username=DSS_USERNAME, password=DSS_PASSWORD)
 pad = Dahua(hostAddress=DAHUA_PAD_ADDRESS, username=DAHUA_PAD_USERNAME, password=DAHUA_PAD_PASSWORD)
@@ -85,7 +85,22 @@ def sync_fingerprint_by_person_id_list(personIds):
 
 	for personId in personIds:
 
+		print(personId)
+
 		response = pad.get_person_fingerprint(personId=personId)
+		person_information = dss.get_person_by_id(personId)
+
+		try:
+
+			person_firstname = person_information['data']['baseInfo']['firstName']
+			person_lastname = person_information['data']['baseInfo']['lastName']
+
+		except :
+
+			print(person_information)
+
+		print(person_firstname, person_lastname)
+
 
 		status = response.status_code
 		
@@ -93,16 +108,22 @@ def sync_fingerprint_by_person_id_list(personIds):
 
 			fingerprint_code = parse_response_content(response.content)['FingerprintData']
 
-			print(fingerprint_code)
+			count_fingerprint = int(len(fingerprint_code) / 1080 )
+			fingerprint_list = []
+
+			for i in range(count_fingerprint):
+
+				fingerprint_list.append(fingerprint_code[(i*1080):((i+1)*1080)])
 
 
+			# json_print(dss.get_person_by_id("555"))
+
+			print(dss.update_person(personId=personId, firstName=person_firstname, lastName=person_lastname, fingerprint_list=fingerprint_list))
+
+		dss.keep_alive()
 
 if __name__ == '__main__':
 	
-	# print((get_person_fingerprint_from_pad("03727333")))
-
-	# sync_fingerprint_by_person_group(groupCode="001")
-
-	person_id_list = get_all_person_id_from_dss_by_group(groupCode="001007")
+	person_id_list = get_all_person_id_from_dss_by_group(groupCode="001")
 
 	print(sync_fingerprint_by_person_id_list(person_id_list))

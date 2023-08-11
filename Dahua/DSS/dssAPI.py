@@ -347,7 +347,7 @@ class DSS :
 
 		return create_person_response.json()
 
-	def update_person(self, personId, firstName, lastName=None, gender="0", imagePath=None, groupCode="001", ruleIds=[], start="1615824000", end="1931443199"):
+	def update_person(self, personId, firstName, lastName=None, gender="0", imagePath=None, groupCode="001", ruleIds=[], fingerprint_list=None, start="1615824000", end="1931443199"):
 
 		update_person_path = f"/obms/api/v1.1/acs/person/{personId}"
 		update_person_url = self.hostAddress + update_person_path
@@ -392,6 +392,25 @@ class DSS :
 				}
 
 		}
+
+		count = 0
+
+		if fingerprint_list :
+
+			requestsBody['authenticationInfo']['fingerprints'] = []
+
+			count += 1
+
+			for fingerprint_code in fingerprint_list :
+
+				fingerprint_body = {
+
+						"fingerprint": fingerprint_code,
+						"name": f"fg{count}",
+						"duressFlag" : 0
+				}
+
+				requestsBody['authenticationInfo']['fingerprints'].append(fingerprint_body)
 
 		update_person_response = requests.put( url=update_person_url, headers=headers, verify=False, json=requestsBody)
 
@@ -489,24 +508,37 @@ class DSS :
 
 if __name__ == '__main__':
 	
-	dss = DSS(hostAddress="https://192.168.11.250", username="system", password="nVk12345")
+	# dss = DSS(hostAddress="https://192.168.11.250", username="system", password="nVk12345")
+	dss = DSS(hostAddress="https://192.168.80.167", username="system", password="Dpu12345")
 
 	# print(dss.get_device_list())
 	# print(dss.get_device_by_code("1000003"))
 
-	print(dss.get_access_rule_list())
+	# print(dss.get_access_rule_list())
 
 	# print(dss.create_person_group("test"))
 	# print(dss.get_person_group_list())
 
-	# print(dss.get_person_list())
-	print(dss.create_person(personId="putter", firstName="ศรายุทธ์ เหล่าวิโรจกุล", lastName="นฤภัทร นิรัติศยางกฃูร", ruleIds=["4", "5"], imagePath="C:/Users/putter/Pictures/putter.jpg"))
+	all_person = dss.get_person_list(pageSize=1000)['data']['pageData']
+	# print(dss.create_person(personId="putter", firstName="ศรายุทธ์ เหล่าวิโรจกุล", lastName="นฤภัทร นิรัติศยางกฃูร", ruleIds=["4", "5"], imagePath="C:/Users/putter/Pictures/putter.jpg"))
 	# print(dss.update_person(personId="putter", firstName="API", ruleIds=["4", "5"], imagePath="C:/Users/putter/Pictures/putter.jpg"))
 	# print(dss.delete_person(personId="putter"))
 
 	# print(dss.get_record())
 	# print(dss.get_record_by_id("204"))
 	# print(dss.set_callback(url="http://192.168.33.37:5000/"))
+
+	count = 0
+
+	for person in all_person :
+
+		finger_num = person['authenticationInfo']['fingerprintNum']
+
+		if int(finger_num) > 0 :
+
+			count+=1
+
+	print(count, len(all_person))
 
 	print(dss.logout())
 
