@@ -1,7 +1,10 @@
 import requests
 from requests.auth import HTTPDigestAuth
 import base64
+import json
 
+def json_print(data):
+	print(json.dumps(data, indent=4))
 
 def image_to_base64(filePath):
 
@@ -130,6 +133,21 @@ class Dahua :
 
 		return get_person_image_response.text
 
+	def get_person_fingerprint(self, personId):
+
+		get_person_fingerprint_path = "/cgi-bin/AccessFingerprint.cgi?action=get"
+		get_person_fingerprint_url = self.hostAddress + get_person_fingerprint_path
+
+		query = {
+
+			"UserID" : personId
+
+		}
+
+		get_person_fingerprint_response = requests.get( url=get_person_fingerprint_url, auth=HTTPDigestAuth(self.username, self.password), params=query )
+
+		return get_person_fingerprint_response
+
 	### Log ###################################
 
 	def get_log(self):
@@ -182,13 +200,15 @@ class Dahua :
 
 if __name__ == '__main__':
 	
-	pad = Dahua(hostAddress='http://192.168.33.98', username='admin', password='nVk12345')
+	pad = Dahua(hostAddress='http://192.168.33.31', username='admin', password='nVk12345')
 
-	# print(pad.get_all_person())
+	json_print(pad.get_all_person())
 	# print(pad.create_person("12", "putty"))
-	# print(pad.get_person_image(personIds=[1,2]))
+	# print(pad.get_person_image(personIds=["00023820"]))
 
-	print(pad.get_log())
+	# print(pad.get_person_fingerprint(personId="00023820"))
+
+	# print(pad.get_log())
 
 	# print(pad.create_person_image())
 
