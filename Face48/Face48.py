@@ -430,10 +430,12 @@ class Face48 :
 
 			requestsBody = {
 
-				"personId" : "649121b309870f18a3c3117f",
-				"locationId" : "test",
+				"name" : "test-update",
+				"personIds" : ["649121b309870f18a3c3117f"],
+				"locationId" : "64c9f302d1775aeb6e871f1f",
 				"isFixed" : False,
-				"sunday" : False,
+				"sunday" : True,
+				"sundayTime" : ["10:00", "14:00"],
 				"monday" : False,
 				"tuesday" : False,
 				"wednesday" : False,
@@ -462,9 +464,9 @@ class Face48 :
 		if not requestsBody :
 
 			requestsBody = {
-
+				"name" : "test-update",
 				"personId" : "649121b309870f18a3c3117f",
-				"locationId" : "test",
+				"locationId" : "64c9f302d1775aeb6e871f1f",
 				"isFixed" : False,
 				"sunday" : False,
 				"monday" : False,
