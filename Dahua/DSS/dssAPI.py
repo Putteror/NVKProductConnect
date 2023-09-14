@@ -469,6 +469,8 @@ class DSS :
 
 		return get_record_response.json()
 
+		
+
 	def get_record_by_id(self, recordId): # 6.2.8.3.2 Obtaining the Details of Access Control Records
 
 		get_record_info_path = f"/obms/api/v1.1/acs/access/record/{recordId}"
@@ -511,7 +513,7 @@ if __name__ == '__main__':
 	# dss = DSS(hostAddress="https://192.168.11.250", username="system", password="nVk12345")
 	dss = DSS(hostAddress="https://192.168.80.167", username="system", password="Dpu12345")
 
-	# print(dss.get_device_list())
+	print(dss.get_device_list())
 	# print(dss.get_device_by_code("1000003"))
 
 	# print(dss.get_access_rule_list())
@@ -519,7 +521,7 @@ if __name__ == '__main__':
 	# print(dss.create_person_group("test"))
 	# print(dss.get_person_group_list())
 
-	all_person = dss.get_person_list(pageSize=1000)['data']['pageData']
+	# all_person = dss.get_person_list(pageSize=1000)['data']['pageData']
 	# print(dss.create_person(personId="putter", firstName="ศรายุทธ์ เหล่าวิโรจกุล", lastName="นฤภัทร นิรัติศยางกฃูร", ruleIds=["4", "5"], imagePath="C:/Users/putter/Pictures/putter.jpg"))
 	# print(dss.update_person(personId="putter", firstName="API", ruleIds=["4", "5"], imagePath="C:/Users/putter/Pictures/putter.jpg"))
 	# print(dss.delete_person(personId="putter"))
@@ -528,17 +530,17 @@ if __name__ == '__main__':
 	# print(dss.get_record_by_id("204"))
 	# print(dss.set_callback(url="http://192.168.33.37:5000/"))
 
-	count = 0
+	# count = 0
 
-	for person in all_person :
+	# for person in all_person :
 
-		finger_num = person['authenticationInfo']['fingerprintNum']
+	# 	finger_num = person['authenticationInfo']['fingerprintNum']
 
-		if int(finger_num) > 0 :
+	# 	if int(finger_num) > 0 :
 
-			count+=1
+	# 		count+=1
 
-	print(count, len(all_person))
+	# print(count, len(all_person))
 
-	print(dss.logout())
+	# print(dss.logout())
 

@@ -407,7 +407,10 @@ class Face48 :
 			}
 
 		response = requests.get(url=api_url, headers=headers, params=query, verify=False)
-		return_data = response.json()
+		try:
+			return_data = response.json()
+		except:
+			return_data = response.text
 
 		return return_data	 
 

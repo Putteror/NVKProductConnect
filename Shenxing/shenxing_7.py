@@ -5,10 +5,15 @@ import requests
 import json
 import time
 import base64
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
 
 CHALLENGE_PATH = '/api/auth/login/challenge'
+OPERATION_PATH = '/api/devices/operation'
 LOGIN_PATH = '/api/auth/login'
 LOGOUT_PATH = '/api/auth/logout'
+
+
 
 REBOOT_PATH = '/api/devices/reboot'
 
@@ -21,6 +26,36 @@ PERSON_PATH = '/api/persons/item'
 PERSON_LIST_PATH = '/api/persons/query'
 
 UPGRADE_PATH = '/api/devices/firmware'
+
+def aes_encryption(key, plaintext):
+
+	key = key.encode('utf-8')
+
+
+	try:
+		# Ensure the key is 128 bits (16 bytes) long
+		if len(key) != 16:
+		    raise ValueError("AES key must be 16 bytes (128 bits) long")
+
+		# Create an AES cipher object in ECB mode
+		cipher = AES.new(key, AES.MODE_ECB)
+
+		# Pad the plaintext using PKCS7
+		padded_plaintext = pad(plaintext.encode('utf-8'), AES.block_size)
+
+		# Encrypt the padded plaintext
+		ciphertext = cipher.encrypt(padded_plaintext)
+
+		# Encode the ciphertext in Base64
+		encrypted_base64 = base64.b64encode(ciphertext).decode('utf-8')
+
+		return encrypted_base64
+
+	except Exception as e:
+		print("Error:", str(e))
+		return None
+
+
 
 def encrypt_string(hash_string):
     sha_signature = hashlib.sha256(hash_string.encode()).hexdigest()
@@ -81,6 +116,7 @@ class Shenxing():
 		self.sessionId = return_data['session_id']
 
 		return return_data
+
 		
 	def logout(self):
 
@@ -94,6 +130,45 @@ class Shenxing():
 		return return_data, self.sessionId
 
 	### Device Management ########################################
+
+	def get_device_operation(self):
+
+		api_url = self.hostAddress + OPERATION_PATH
+
+		query = {
+			"type" : "qrcode_token"
+		}
+
+		headers = {"Cookie" : f'sessionID={self.sessionId}'}
+
+		response = requests.get(url=api_url, headers=headers, params=query)
+
+		return_data = response.json()
+
+		return return_data
+
+	def set_device_operation(self, key):
+
+		api_url = self.hostAddress + OPERATION_PATH
+
+		operation_data = self.get_device_operation()
+		password = encrypt_string( operation_data['type'] + operation_data['salt'] )
+
+		requestsBody = {
+			"type" : "qrcode_token",
+			"password" : password,
+			"detail" : aes_encryption( key ,self.sessionId )
+		}
+
+		print(requestsBody)
+
+		headers = {"Cookie" : f'sessionID={self.sessionId}'}
+
+		response = requests.post(url=api_url, headers=headers, json=requestsBody)
+
+		return_data = response.text
+
+		return return_data
 
 	def extract_image(self, image_path=None, image_base64=None):
 
@@ -274,12 +349,12 @@ class Shenxing():
 
 if __name__ == '__main__':
 
-	shenxing = Shenxing(hostAddress='http://192.168.90.90', username='admin', password='ifs12345')
+	shenxing = Shenxing(hostAddress='http://192.168.33.108', username='admin', password='nvk12345')
 
 	print(shenxing.login())
 	# print(shenxing.get_person_list())
 	# print(shenxing.reboot())
-	# print(shenxing.get_device_status())
+	print(shenxing.get_access_control_parameter())
 	# print(shenxing.create_person(name='testupdate'))
 	# print(shenxing.extract_image(image_path='C:/Users/putter/Pictures/Capture.PNG'))
 	# print(shenxing.get_third_party_server())
@@ -292,8 +367,8 @@ if __name__ == '__main__':
 	# 	print(shenxing.check_status_upgrade_firmware())
 	# 	time.sleep(5)
 
-	# print(shenxing.logout())
+	print(shenxing.logout())
 
-	shenxing.download_log()
+	# shenxing.download_log()
 
 	#64356494d77a506b1f776618
