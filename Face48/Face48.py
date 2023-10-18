@@ -25,6 +25,7 @@ HISTORY_URL = '/api/v1/history/events/'
 
 PEOPLE_URL = '/api/v1/people'
 SEARCH_PEOPLE_URL = '/api/v1/people/search'
+EXPORT_PEOPLE_URL = '/api/v1/people/export'
 
 class Face48 :
 
@@ -227,7 +228,7 @@ class Face48 :
 
 		api_url = self.hostAddress + ACCESS_CONTROL_RULE_URL + '/' + str(rule_id)
 
-		headers = { 'Content-Type' : 'Application/json', 'Authorization' : f'Bearer { self.accessToken }'}
+		headers = { 'Content-Type' : 'Application/json', 'Authorization' : f'Bearer { self.accessToken }' }
 
 		response = requests.get(url=api_url, headers=headers)
 		return_data = response.json()
@@ -554,7 +555,19 @@ class Face48 :
 
 
 		response = requests.get(url=api_url, headers=headers, params=query)
-		return_data = response.text
+		return_data = response.json()
+
+		return return_data
+
+	def get_people_by_id(self, person_id, type='employee'):
+
+		api_url = self.hostAddress + PEOPLE_URL + f"/{person_id}"
+
+		headers = { 'Content-Type' : 'Application/json', 'Authorization' : f'Bearer { self.accessToken }'}
+
+
+		response = requests.get(url=api_url, headers=headers)
+		return_data = response.json()
 
 		return return_data
 
@@ -588,14 +601,27 @@ class Face48 :
 
 		return return_data
 
+	def export_people(self, query=None):
+
+		api_url = self.hostAddress + EXPORT_PEOPLE_URL + "?type=employee&employeeClass=vip&allCompany=true&fields=[title,email,firstName,lastName,licensePlate,mobilePhone,company,department,jobPosition,branch,region,cardId,cardName,employeeId,thaiCitizenId,passportId,enrollDate,expiredDate,employeeClass]"
+		headers = { 'Content-Type' : 'Application/json', 'Authorization' : f'Bearer { self.accessToken }'}
+
+		response = requests.get(url=api_url, headers=headers)
+		return_data = response.json()
+
+		return return_data
+
+
 import json
 
 if __name__ == '__main__':
 
-	
+
+	face48 = Face48(hostAddress='https://dev.face48.com', username='iyo@nvk.co.th', password='P@ssw0rd!234')
+	# face48 = Face48(hostAddress='http://10.250.81.58', username='enco_admin', password='EnCo@2021')
 	# face48 = Face48(hostAddress='http://10.10.10.97', username='admin', password='P@ssw0rd@NMU')
 	# face48 = Face48(hostAddress='https://face48.vajira.ac.th', username='admin', password='P@ssw0rd2022')
-	face48 = Face48(hostAddress='http://192.168.33.45', username='iyo@nvk.co.th', password='P@ssw0rd!234')
+	# face48 = Face48(hostAddress='http://192.168.33.45', username='iyo@nvk.co.th', password='P@ssw0rd!234')
 
 	print(face48.login())
 
@@ -620,8 +646,12 @@ if __name__ == '__main__':
 		# "startDate":'2023-06-14 00:00',
 		# "endDate":"2023-06-15 06:59"
 	}
-	print(json.dumps(face48.get_history_log_list(query=query), indent=4))
+	# print(json.dumps(face48.get_history_log_list(query=query), indent=4))
 	# print(face48.delete_history_logs_by_id(log_id_list=['64333e9dd77a506b1f77659f']))
+
+	# print(face48.export_people())
+
+	print(face48.get_people_by_id("652f5d8b050ccedaa8337c2a")['data'])
 
 	# print(face48.get_people_list(query={'type' : 'employee','size' : 30, 'employeeId' : 'NVK48'}))
 	# print(face48.search_people(query={'type' : 'employee','size' : 30, 'employeeId' : 'NVK48'}))

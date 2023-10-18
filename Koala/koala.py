@@ -81,9 +81,12 @@ class Koala :
 
 if __name__ == '__main__':
 	
-	koala = Koala(hostAddress='http://192.168.20.102/', username='tor@nvk.co.th', password='nVk123456')
+	# koala = Koala(hostAddress='http://192.168.20.102/', username='tor@nvk.co.th', password='nVk123456')
+	koala = Koala(hostAddress='http://192.168.1.76/', username='admin@otp.go.th', password='admin1234')
 
 	person_list = koala.get_person_list()
-	access_control_group_list = koala.get_access_control_group_list()
+	# access_control_group_list = koala.get_access_control_group_list()
 
-	print(access_control_group_list)
+	# print(access_control_group_list)
+
+	print(person_list)
