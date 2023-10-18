@@ -50,11 +50,15 @@ for face48_person_id in person_id_list_in_face48 :
 		loss_person_id_list.append(face48_person_id)
 		person_info = {}
 		person_info_response = face48.get_people_by_id("652f5d8b050ccedaa8337c2a")['data']
-		person_info['employeeId'] = person_info_response['employeeId']
-		person_info['firstName'] = person_info_response['firstName']
-		person_info['lastName'] = person_info_response['lastName']
-		person_info['company'] = person_info_response['company']
-		loss_person_info_list.append(person_info)
+		try:
+			person_info['employeeId'] = person_info_response['employeeId']
+			person_info['firstName'] = person_info_response['firstName']
+			person_info['lastName'] = person_info_response['lastName']
+			person_info['company'] = person_info_response['company']
+
+			loss_person_info_list.append(person_info)
+		except:
+			pass
 
 df = pd.DataFrame(loss_person_info_list)
 
