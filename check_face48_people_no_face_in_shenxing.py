@@ -2,28 +2,30 @@ from Face48.Face48 import *
 from Shenxing.shenxing_7 import *
 import pandas as pd
 
-face48 = Face48(hostAddress='http://172.21.35.249', username='admin', password='P@ssw0rd2023')
-shenxing = Shenxing(hostAddress='http://172.21.35.248', username='admin', password='nvk12345')
+# face48 = Face48(hostAddress='http://172.21.35.249', username='admin', password='P@ssw0rd2023')
+# shenxing = Shenxing(hostAddress='http://172.21.35.248', username='admin', password='nvk12345')
+face48 = Face48(hostAddress='https://dev.face48.com', username='iyo@nvk.co.th', password='P@ssw0rd!234')
+shenxing = Shenxing(hostAddress='http://192.168.33.108', username='admin', password='nvk12345')
 print(face48.login())
 print(shenxing.login())
 
 
 ### Shenxing #######################################################
 
-check_all_obj = shenxing.get_person_list(limit=1)
+# check_all_obj = shenxing.get_person_list(limit=1)
 
-all_obj = check_all_obj['paging']['total']
+# all_obj = check_all_obj['paging']['total']
 
-all_page = int(all_obj / 100) + 1
+# all_page = int(all_obj / 100) + 1
 
-person_id_list_in_shenxing = []
+# person_id_list_in_shenxing = []
 
-for page in range(0,all_page) :
-	print(page*100)
-	person_list = shenxing.get_person_list(limit=100, offset=page*100)['data']
-	for person in person_list :
+# for page in range(0,all_page) :
+# 	print(page*100)
+# 	person_list = shenxing.get_person_list(limit=100, offset=page*100)['data']
+# 	for person in person_list :
 
-		person_id_list_in_shenxing.append(person['id'])
+# 		person_id_list_in_shenxing.append(person['id'])
 
 ####################################################################
 
@@ -36,40 +38,46 @@ person_id_list_in_face48 = []
 
 for person in person_list :
 
-	person_id_list_in_face48.append(person['id'])
+	if not person['photos'] :
+		person_info = {}
+		person_info['firstName'] = person['firstName']
+		person_info['lastName'] = person['lastName']
+		person_info['employeeId'] = person['employeeId']
+		person_id_list_in_face48.append(person_info)
 
 ###################################################################
 
-loss_person_id_list = []
-loss_person_info_list = []
+# loss_person_id_list = []
+# loss_person_info_list = []
 
-for face48_person_id in person_id_list_in_face48 :
+# for face48_person_id in person_id_list_in_face48 :
 
-	if face48_person_id in person_id_list_in_shenxing :
+# 	if face48_person_id not in person_id_list_in_shenxing :
 
-		loss_person_id_list.append(face48_person_id)
-		person_info = {}
-		person_info_response = face48.get_people_by_id("652f5d8b050ccedaa8337c2a")['data']
-		try:
-			person_info['employeeId'] = person_info_response['employeeId']
-			person_info['firstName'] = person_info_response['firstName']
-			person_info['lastName'] = person_info_response['lastName']
-			person_info['company'] = person_info_response['company']
+# 		loss_person_id_list.append(face48_person_id)
+# 		person_info = {}
+# 		person_info_response = face48.get_people_by_id("652f5d8b050ccedaa8337c2a")['data']
+# 		try:
+# 			person_info['employeeId'] = person_info_response['employeeId']
+# 			person_info['firstName'] = person_info_response['firstName']
+# 			person_info['lastName'] = person_info_response['lastName']
+# 			person_info['company'] = person_info_response['company']
 
-			loss_person_info_list.append(person_info)
-		except:
-			pass
+# 			loss_person_info_list.append(person_info)
+# 		except:
+# 			pass
 
-df = pd.DataFrame(loss_person_info_list)
+# df = pd.DataFrame(loss_person_info_list)
 
-# Specify the output file name (e.g., 'employee_data.xlsx')
-output_file = 'employee_data.xlsx'
+# # Specify the output file name (e.g., 'employee_data.xlsx')
+# output_file = 'employee_data.xlsx'
 
-# Save the DataFrame to an Excel file
-df.to_excel(output_file, index=False)  # index=False to exclude the index column
+# # Save the DataFrame to an Excel file
+# df.to_excel(output_file, index=False)  # index=False to exclude the index column
+
+print(person_id_list_in_face48)
 
 
-
-print(loss_person_info_list)
-print(face48.logout())
-print(shenxing.logout())
+# print(loss_person_info_list)
+# print(face48.logout())
+# print(shenxing.logout())
