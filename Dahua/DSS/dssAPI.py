@@ -347,7 +347,7 @@ class DSS :
 
 		return create_person_response.json()
 
-	def update_person(self, personId, firstName, lastName=None, gender="0", imagePath=None, groupCode="001", ruleIds=[], fingerprint_list=None, start="1615824000", end="1931443199"):
+	def update_person(self, personId, firstName, lastName=None, gender="0", imagePath=None, groupCode="001", ruleIds=[], fingerprints=None, fingerprint_list=None, start="1615824000", end="1893430799"):
 
 		update_person_path = f"/obms/api/v1.1/acs/person/{personId}"
 		update_person_url = self.hostAddress + update_person_path
@@ -388,7 +388,8 @@ class DSS :
 				},
 			"authenticationInfo": { 
 				"startTime": str(start), 
-				"endTime": str(end)
+				"endTime": str(end),
+				"fingerprints" : fingerprints
 				}
 
 		}
@@ -450,7 +451,7 @@ class DSS :
 
 	# 6.2.8.3 Access Control Record
 
-	def get_record(self, page=1, size=30, start="1000000000", end=int(time.time())): # 6.2.8.3.1 Obtaining Access Control Records by Page
+	def get_record(self, page=1, size=30, start="1000000000", end=int(time.time()), channelIds=[]): # 6.2.8.3.1 Obtaining Access Control Records by Page
 
 		get_record_path = "/obms/api/v1.1/acs/access/record/fetch/page"
 		get_record_url = self.hostAddress + get_record_path
@@ -462,7 +463,8 @@ class DSS :
 			"page" : page,
 			"pageSize" : size,
 			"startTime": str(start), 
-			"endTime": str(end)
+			"endTime": str(end),
+			"channelIds" : channelIds
 		}
 
 		get_record_response = requests.post( url=get_record_url, headers=headers, json=requestsBody, verify=False )
@@ -513,20 +515,23 @@ if __name__ == '__main__':
 	# dss = DSS(hostAddress="https://192.168.11.250", username="system", password="nVk12345")
 	dss = DSS(hostAddress="https://192.168.80.167", username="system", password="Dpu12345")
 
-	print(dss.get_device_list())
-	# print(dss.get_device_by_code("1000003"))
+	# print(dss.get_device_list())
+	# print(dss.get_device_by_code("1000039"))
 
 	# print(dss.get_access_rule_list())
 
 	# print(dss.create_person_group("test"))
 	# print(dss.get_person_group_list())
 
-	# all_person = dss.get_person_list(pageSize=1000)['data']['pageData']
+	# all_person = dss.get_person_list(pageSize=2)['data']
+	# print(all_person)
+
+	# print(dss.get_person_by_id("601168"))
 	# print(dss.create_person(personId="putter", firstName="ศรายุทธ์ เหล่าวิโรจกุล", lastName="นฤภัทร นิรัติศยางกฃูร", ruleIds=["4", "5"], imagePath="C:/Users/putter/Pictures/putter.jpg"))
 	# print(dss.update_person(personId="putter", firstName="API", ruleIds=["4", "5"], imagePath="C:/Users/putter/Pictures/putter.jpg"))
 	# print(dss.delete_person(personId="putter"))
 
-	# print(dss.get_record())
+	print(dss.get_record(channelIds=['1000039$7$0$1']))
 	# print(dss.get_record_by_id("204"))
 	# print(dss.set_callback(url="http://192.168.33.37:5000/"))
 

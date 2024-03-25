@@ -560,7 +560,7 @@ class Face48 :
 
 		return return_data
 
-	def get_people_by_id(self, person_id, type='employee'):
+	def get_people_by_id(self, person_id):
 
 		api_url = self.hostAddress + PEOPLE_URL + f"/{person_id}"
 

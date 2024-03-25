@@ -5,7 +5,8 @@ from DSS.dssAPI import DSS
 from Pad.padAPI import Dahua
 import json
 
-DAHUA_PAD_ADDRESS = "http://192.168.151.35"
+
+DAHUA_PAD_ADDRESS = "http://192.168.151.36"
 DAHUA_PAD_USERNAME = "admin"
 DAHUA_PAD_PASSWORD = "dpu!2345"
 
@@ -83,12 +84,15 @@ def get_all_person_id_from_dss_by_group(groupCode=None):
 
 def sync_fingerprint_by_person_id_list(personIds):
 
+	count = 0
+
 	for personId in personIds:
 
 		print(personId)
 
 		response = pad.get_person_fingerprint(personId=personId)
 		person_information = dss.get_person_by_id(personId)
+		# print(response)
 
 		try:
 
@@ -104,7 +108,11 @@ def sync_fingerprint_by_person_id_list(personIds):
 
 		status = response.status_code
 		
-		if status == 200 :
+		if status == 200 : ### if have finger in pad
+
+			count = count + 1
+
+			print(f"have finger {count}")
 
 			fingerprint_code = parse_response_content(response.content)['FingerprintData']
 
@@ -118,12 +126,16 @@ def sync_fingerprint_by_person_id_list(personIds):
 
 			# json_print(dss.get_person_by_id("555"))
 
-			print(dss.update_person(personId=personId, firstName=person_firstname, lastName=person_lastname, fingerprint_list=fingerprint_list))
+			if ( personId == "430607" ) or ( personId == "601162" ):
+
+				print(dss.update_person(personId=personId, firstName=person_firstname, lastName=person_lastname, fingerprint_list=fingerprint_list))
 
 		dss.keep_alive()
 
 if __name__ == '__main__':
 	
 	person_id_list = get_all_person_id_from_dss_by_group(groupCode="001")
+
+	print(person_id_list)
 
 	print(sync_fingerprint_by_person_id_list(person_id_list))

@@ -96,24 +96,6 @@ class Koala :
 
 		return response_json
 
-	def check_person_photo(self, image_path):
-
-		api_path = "/subject/photo/check"
-
-		headers = {
-			'Authorization': self.token
-		}
-
-		api_url = self.hostAddress + api_path
-
-		files = {'photo': open(image_path, 'rb')}
-
-		response = requests.post(url=api_url, files=files, headers=headers)
-
-		return_data = response.json()
-
-		return return_data
-
 
 if __name__ == '__main__':
 	
@@ -121,10 +103,9 @@ if __name__ == '__main__':
 	koala = Koala(hostAddress='http://172.21.1.16/', username='admin@ddc.mail.go.th', password='admin1234')
 
 	# person_list = koala.get_person_list()
-	# person_info = koala.get_person_by_id(subject_id=2876)
+	person_info = koala.get_person_by_id(subject_id=2876)
 	# access_control_group_list = koala.get_access_control_group_list()
 
 	# print(access_control_group_list)
 
-	check_phoho = koala.check_person_photo("C:/Users/putter/Pictures/putter.jpg")
-	print(check_phoho)
+	print(person_info)

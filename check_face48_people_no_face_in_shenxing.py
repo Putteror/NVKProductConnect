@@ -5,7 +5,7 @@ import pandas as pd
 # face48 = Face48(hostAddress='http://172.21.35.249', username='admin', password='P@ssw0rd2023')
 # shenxing = Shenxing(hostAddress='http://172.21.35.248', username='admin', password='nvk12345')
 face48 = Face48(hostAddress='https://dev.face48.com', username='iyo@nvk.co.th', password='P@ssw0rd!234')
-shenxing = Shenxing(hostAddress='http://192.168.33.108', username='admin', password='nvk12345')
+shenxing = Shenxing(hostAddress='http://192.168.33.107', username='admin', password='nvk12345')
 print(face48.login())
 print(shenxing.login())
 
@@ -67,13 +67,13 @@ for person in person_list :
 # 		except:
 # 			pass
 
-# df = pd.DataFrame(loss_person_info_list)
+df = pd.DataFrame(person_id_list_in_face48)
 
-# # Specify the output file name (e.g., 'employee_data.xlsx')
-# output_file = 'employee_data.xlsx'
+# Specify the output file name (e.g., 'employee_data.xlsx')
+output_file = 'person_employee_data.xlsx'
 
 # # Save the DataFrame to an Excel file
-# df.to_excel(output_file, index=False)  # index=False to exclude the index column
+df.to_excel(output_file, index=False)  # index=False to exclude the index column
 
 print(person_id_list_in_face48)
 
