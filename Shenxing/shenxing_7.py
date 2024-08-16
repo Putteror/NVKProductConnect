@@ -301,6 +301,33 @@ class Shenxing():
 
 		return return_data
 
+	def update_person(self, person_id, name="API", person_type="staff", requestsBody=None): 
+
+		## if create fail it still create but no picture
+
+		api_url = self.hostAddress + PERSON_PATH + f"/{person_id}"
+		print(api_url)
+		headers = {"Cookie" : f'sessionID={self.sessionId}'}
+
+		if not requestsBody :
+
+			requestsBody = {
+					"recognition_type": person_type,
+					"is_admin" : True,
+					"person_name" : name,
+					"id":"41578150",
+					"group_list": ['1'],
+					"face_list" : [{
+								"idx" : 0,
+								"data" : None
+								}]
+					}	
+
+		response = requests.put(url=api_url, headers=headers, json=requestsBody)
+		return_data = response.json()
+
+		return return_data
+
 	def get_person_by_id(self, person_id):
 
 		api_url = self.hostAddress + PERSON_PATH + '/' + person_id
@@ -349,17 +376,19 @@ class Shenxing():
 
 if __name__ == '__main__':
 
-	shenxing = Shenxing(hostAddress='http://192.168.33.108', username='admin', password='nvk12345')
+	# shenxing = Shenxing(hostAddress='http://192.168.33.108', username='admin', password='nvk12345')
+	shenxing = Shenxing(hostAddress='http://172.23.22.2', username='admin', password='uIh12345')
 
 	print(shenxing.login())
 	# print(shenxing.get_person_list())
 	# print(shenxing.reboot())
 	# print(shenxing.get_access_control_parameter())
-	# print(shenxing.create_person(name='testupdate'))
-	print(shenxing.extract_image(image_path='C:/Work/NVK48/IFS/TBKK/Resize/STM/S0746.jpg'))
+	print(shenxing.create_person(name='testupdate'))
+	# print(shenxing.extract_image(image_path='C:/Work/NVK48/IFS/TBKK/Resize/STM/S0746.jpg'))
 	# print(shenxing.get_third_party_server())
 	# print(shenxing.set_third_party_server(url='http://192.168.24.11:5000/callback'))
-	# print(shenxing.get_person_by_id('6492c1efa09f09187b877496'))
+	# print(shenxing.get_person_by_id('6447'))
+	# print(shenxing.update_person('8904'))
 	# print(shenxing.delete_person_by_id('42855817'))
 
 	# print(shenxing.upgrade_firmware())

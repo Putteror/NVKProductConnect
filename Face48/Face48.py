@@ -652,22 +652,24 @@ if __name__ == '__main__':
 
 	# print(face48.get_access_control_rule_list())
 
-	query = {
-		"success":True,
-		# "summary":True,
-		"size":30,
-		"page":1,
-		"start_id":"64a7da066259cd8d171392e8",
-		'order_by' : 'desc',
-		# "startDate":'2023-06-14 00:00',
-		# "endDate":"2023-06-15 06:59"
-	}
+	# query = {
+	# 	"success":True,
+	# 	# "summary":True,
+	# 	"size":30,
+	# 	"page":1,
+	# 	"start_id":"64a7da066259cd8d171392e8",
+	# 	'order_by' : 'desc',
+	# 	# "startDate":'2023-06-14 00:00',
+	# 	# "endDate":"2023-06-15 06:59"
+	# }
 	# print(json.dumps(face48.get_history_log_list(query=query), indent=4))
 	# print(face48.delete_history_logs_by_id(log_id_list=['64333e9dd77a506b1f77659f']))
 
+	print(face48.get_event_list())
+
 	# print(face48.export_people())
 
-	print(face48.get_people_by_id("652f5d8b050ccedaa8337c2a")['data'])
+	# print(face48.get_people_by_id("652f5d8b050ccedaa8337c2a")['data'])
 
 	# print(face48.get_people_list(query={'type' : 'employee','size' : 30, 'employeeId' : 'NVK48'}))
 	# print(face48.search_people(query={'type' : 'employee','size' : 30, 'employeeId' : 'NVK48'}))

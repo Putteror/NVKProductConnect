@@ -200,9 +200,9 @@ class Dahua :
 
 if __name__ == '__main__':
 	
-	pad = Dahua(hostAddress='http://192.168.33.31', username='admin', password='nVk12345')
+	# pad = Dahua(hostAddress='http://192.168.33.31', username='admin', password='nVk12345')
 
-	json_print(pad.get_all_person())
+	# json_print(pad.get_all_person())
 	# print(pad.create_person("12", "putty"))
 	# print(pad.get_person_image(personIds=["00023820"]))
 
@@ -211,5 +211,9 @@ if __name__ == '__main__':
 	# print(pad.get_log())
 
 	# print(pad.create_person_image())
+
+	camera = Dahua(hostAddress='http//192.168.33.108', username='admin', password='nVk12345')
+
+	camera.get_log()
 
 
